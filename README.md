@@ -300,7 +300,7 @@ public interface OnBleOtherDataListener {
 BabyDeviceData parsing class
 BabyBleConfig directive configuration class
 ```
-#### 2, [height gauge](height/en/index.html)
+#### 2, [height gauge](https://elinkthings.github.io/AILinkSDKAndroidDoc/height/en/index.html)
 ```
 HeightDeviceData Parsing Class
 HeightBleConfig directive configuration class
