@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AILinkSdkDemoAndroid</string>
+    <string name="clear">清空</string>
+    <string name="handshake">握手</string>
+    <string name="version">版本</string>
+    <string name="time">时间</string>
+</resources>

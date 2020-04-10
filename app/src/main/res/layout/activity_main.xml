@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_app_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:padding="10dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+
+        <Button
+            android:id="@+id/btn_sphy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="血压计"
+            />
+
+        <Button
+            android:id="@+id/btn_tempgun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="额温枪"
+            />
+
+        <Button
+            android:id="@+id/btn_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="体温计"
+            />
+
+        <Button
+            android:id="@+id/btn_baby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="婴儿秤"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+
+        <Button
+            android:id="@+id/btn_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身高仪"
+            />
+
+
+
+        <Button
+            android:id="@+id/btn_ad_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="艾迪体脂秤"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_wifi_ble_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WiFi+Ble体脂秤"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+
+        <Button
+            android:id="@+id/btn_ble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ble通用设置"
+            />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

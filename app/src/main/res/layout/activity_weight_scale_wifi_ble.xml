@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+             xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <Button
+        android:id="@+id/wifistatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查看wifi状态" />
+
+    <Button
+        android:id="@+id/scan_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/wifistatus"
+        android:text="搜索wifi热点" />
+
+    <Button
+        android:id="@+id/sn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan_wifi"
+        android:layout_marginTop="8dp"
+        android:text="查看设备did号" />
+
+    <EditText
+        android:id="@+id/select_wifi_et"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="22dp"
+        android:layout_toEndOf="@+id/scan_wifi"
+        android:hint="选择wifi序号"
+        android:inputType="number"
+        android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/connect_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/select_wifi_et"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/disconnect"
+        android:text="发起连接" />
+
+    <Button
+        android:id="@+id/disconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan_wifi"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/sn"
+        android:text="断开连接" />
+
+
+    <Button
+    android:id="@+id/setedmac"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/sn"
+    android:layout_marginStart="9dp"
+    android:layout_marginTop="5dp"
+    android:text="获取希望设置的MAC" />
+
+    <Button
+    android:id="@+id/setedpaw"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/sn"
+    android:layout_toEndOf="@id/setedmac"
+    android:layout_marginStart="9dp"
+    android:layout_marginTop="5dp"
+    android:text="获取希望设置的密码" />
+    <Button
+        android:id="@+id/setedname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setedmac"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="5dp"
+        android:text="获取当前连接wifi名称" />
+
+
+    <RadioGroup
+        android:id="@+id/unit"
+        android:layout_below="@+id/setedname"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="kg"/>
+        <RadioButton
+            android:id="@+id/jin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="斤"/>
+        <RadioButton
+            android:id="@+id/st_lb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="st:lb"/>
+        <RadioButton
+            android:id="@+id/lb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="lb"/>
+    </RadioGroup>
+    <ListView
+        android:id="@+id/log_list"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/unit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff"
+              android:orientation="vertical">
+
+
+    <TextView
+
+        android:id="@+id/tv_move_data_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="title"
+        android:textColor="#000000"
+        android:textSize="20dp"
+
+
+    />
+
+    <TextView
+
+        android:id="@+id/tv_move_data_title_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="title_2"
+        android:textColor="#000000"
+        android:textSize="18dp"
+
+    />
+
+    <EditText
+        android:id="@+id/et_move_data_context"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:focusable="true"
+
+        />
+
+
+
+
+    <TextView
+        android:id="@+id/tv_move_data_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="40dp"
+        android:background="#2878ce"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="确认"
+        android:textColor="#ffffff"
+        android:textSize="18dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_move_data_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="取消"
+        android:textSize="15dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+</LinearLayout>

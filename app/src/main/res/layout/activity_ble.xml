@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:id="@+id/btnClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clear"
+                    />
+
+                <Button
+                    android:id="@+id/btnHandshake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/handshake"
+                    />
+
+                <Button
+                    android:id="@+id/btnVersion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读版本"
+                    />
+
+                <Button
+                    android:id="@+id/btnBattery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读电量"
+                    />
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+
+                <Button
+                    android:id="@+id/btnTimeRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读时间"
+                    />
+
+                <Button
+                    android:id="@+id/btnTimeWrite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="写时间"
+                    />
+
+                <Button
+                    android:id="@+id/btnMacRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读mac"
+                    />
+                <Button
+                    android:id="@+id/btnBmRestart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重启模块"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+
+                <EditText
+                    android:id="@+id/etMcuType"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="串口,i2c,spi"
+                    android:text="1"
+                    />
+                <Button
+                    android:id="@+id/btnMcuType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置模式"
+                    />
+                <Button
+                    android:id="@+id/btnBmReset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="出厂设置"
+                    />
+
+                <Button
+                    android:id="@+id/btnUnits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读单位"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+
+                <EditText
+                    android:id="@+id/etDid"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="cidS,vidS,pidS,cid,vid,pid"
+                    android:text="1,1,1,1,2,3"
+                    />
+                <Button
+                    android:id="@+id/btnDidWrite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="写DID"
+                    />
+                <Button
+                    android:id="@+id/btnDidRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读DID"
+                    />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:maxLength="13"
+                    />
+
+                <Button
+                    android:id="@+id/btnNameWrite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="写名称"
+                    />
+
+                <Button
+                    android:id="@+id/btnNameRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读名称"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+
+                <EditText
+                    android:id="@+id/etMacType"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:maxLength="1"
+                    android:digits="0987654321"
+                    />
+
+                <Button
+                    android:id="@+id/btnMacTypeWrite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="写Mac大小端"
+                    />
+
+                <Button
+                    android:id="@+id/btnMacTypeRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读Mac大小端"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+
+                <EditText
+                    android:id="@+id/etBroadcastTime"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:digits="0987654321"
+                    />
+
+                <Button
+                    android:id="@+id/btnBroadcastTimeWrite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="写广播间隔"
+                    />
+
+                <Button
+                    android:id="@+id/btnBroadcastTimeRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读广播间隔"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        >
+
+
+    </ListView>
+
+</LinearLayout>
