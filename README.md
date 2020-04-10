@@ -1,5 +1,5 @@
 
-# AILink SDK Instructions - Android
+# Module documentation - Android
 
 [aar package download address](https://github.com/elinkthings/AILinkSdkDemoAndroid/releases)
 
@@ -293,95 +293,41 @@ public interface OnBleOtherDataListener {
 #### 6, For more operations, please refer to the demo, you can clone this project
 
 
-## 六, AILinkBleParsingAndroid library overview
+## 六, [AILinkBleParsingAndroid library overview](https://elinkthings.github.io/AILinkSDKAndroidDoc/)
 
-#### 1, baby scale
+#### 1, [baby scale](https://elinkthings.github.io/AILinkSDKAndroidDoc/babyscale/en/index.html)
 ```
 BabyDeviceData parsing class
 BabyBleConfig directive configuration class
 ```
-#### 2, height gauge
+#### 2, [height gauge](height/en/index.html)
 ```
 HeightDeviceData Parsing Class
 HeightBleConfig directive configuration class
 ```
-#### 3, sphygmomanometer
+#### 3, [sphygmomanometer](https://elinkthings.github.io/AILinkSDKAndroidDoc/sphygmomanometer/en/index.html)
 ```
 SphyDeviceData parsing class
 SphyBleConfig instruction configuration class
 ```
-#### 4, thermometer
+#### 4, [thermometer](https://elinkthings.github.io/AILinkSDKAndroidDoc/thermometer/en/index.html)
 ```
 TempDeviceData parsing class
 TempBleConfig instruction configuration class
 ```
-#### 5, forehead gun
+#### 5, [forehead gun](https://elinkthings.github.io/AILinkSDKAndroidDoc/foreheadgun/en/index.html)
 ```
 TempGunDeviceData parsing class
 TempGunBleConfig instruction configuration class
 ```
-#### 6, TPMS (Smart Tire Pressure)
+#### 6, [TPMS (Smart Tire Pressure)](https://elinkthings.github.io/AILinkSDKAndroidDoc/tpms/en/index.html)
 ```
 TPMS transfer board:
 TpmsDeviceData Parsing Class
 TpmsBleConfig directive configuration class
 ```
-#### 7, electronic lock
-```
-Electronic locks:
-TempGunDeviceData parsing class
-TempGunBleConfig instruction configuration class
-LockKeyBean electronic lock (user) key information
-public class LockKeyBean implements Serializable {
 
-    / **
-     * Key type (password, remote control, fingerprint ...)
-     * /
-    @ LockBleConfig.KeyType
-    private int mKeyType;
-    / **
-     * User id (key id)
-     * /
-    private int mUserId;
-    / **
-     * Password (6 digits), 0 means not supported
-     * /
-    private int mPassword = 0;
-    / **
-     * Validity Type
-     * /
-    @ LockBleConfig.Time
-    private int mValidTimeType;
-    / **
-     * 0 means not supported
-     * Year, month, day, hour, minute, second <br>
-     * Validity start time (permanent time is 0,0,0,0,0) <br>
-     * If it is a babysitter password, the format is: hour, minute <br>
-     * /
-    private long mStartTime = 0;
-    / **
-     * 0 means not supported
-     * Year, month, day, hour, minute, second <br>
-     * Validity end time (permanent time is -1, -1, -1, -1, -1) <br>
-     * If it is a babysitter password, the format is: hour, minute <br>
-     * /
-    private long mStopTime = 0;
-    / **
-     * 0 means not supported
-     * Nanny lock repeat effective way, day, week, month
-     * /
-    @ LockBleConfig.Repeat
-    private int mRepeat = 0;
-    / **
-     * Repeat time, days of the week, days of the month
-     * /
-    private List <Integer> mRepeatList = new ArrayList <> ();
-}
-Electronic lock remote control:
-LockRemoteControlDeviceData parsing class
-LockRemoteControlBleConfig instruction configuration class
-```
-#### 8, Body Fat Scale
+#### 7, [Body Fat Scale](https://elinkthings.github.io/AILinkSDKAndroidDoc/BodyFatScale/en/index.html)
 ```
 BodyFatBleUtilsData Body Fat Scale Object
 BodyFatDataUtil Body fat scale analysis and instruction configuration class

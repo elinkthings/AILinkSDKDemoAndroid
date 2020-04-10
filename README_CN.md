@@ -289,95 +289,40 @@ public interface OnBleOtherDataListener {
 #### 6,更多操作请参考demo,将此项目clone下来即可
 
 
-## 六、AILinkBleParsingAndroid库概述
+## 六、[AILinkBleParsingAndroid库概述](https://elinkthings.github.io/AILinkSDKAndroidDoc/README_CN.html)
 
-#### 1,婴儿秤
+#### 1,[婴儿秤](https://elinkthings.github.io/AILinkSDKAndroidDoc/babyscale/zh/index.html)
 ```
 BabyDeviceData解析类
 BabyBleConfig 指令配置类
 ```
-#### 2,身高仪
+#### 2,[身高仪](https://elinkthings.github.io/AILinkSDKAndroidDoc/height/zh/index.html)
 ```
 HeightDeviceData解析类
 HeightBleConfig指令配置类
 ```
-#### 3,血压计
+#### 3,[血压计](https://elinkthings.github.io/AILinkSDKAndroidDoc/sphygmomanometer/zh/index.html)
 ```
 SphyDeviceData解析类
 SphyBleConfig指令配置类
 ```
-#### 4,体温计
+#### 4,[体温计](https://elinkthings.github.io/AILinkSDKAndroidDoc/thermometer/zh/index.html)
 ```
 TempDeviceData解析类
 TempBleConfig指令配置类
 ```
-#### 5,额温枪
+#### 5,[额温枪](https://elinkthings.github.io/AILinkSDKAndroidDoc/foreheadgun/zh/index.html)
 ```
 TempGunDeviceData解析类
 TempGunBleConfig指令配置类
 ```
-#### 6,TPMS(智能胎压)
+#### 6,[TPMS(智能胎压)](https://elinkthings.github.io/AILinkSDKAndroidDoc/tpms/zh/index.html)
 ```
 TPMS转接板:
 TpmsDeviceData解析类
 TpmsBleConfig指令配置类
 ```
-#### 7,电子锁
-```
-电子锁:
-TempGunDeviceData解析类
-TempGunBleConfig指令配置类
-LockKeyBean电子锁(用户)钥匙信息
-public class LockKeyBean implements Serializable {
-
-    /**
-     * 钥匙类型(密码,遥控,指纹...)
-     */
-    @LockBleConfig.KeyType
-    private int mKeyType;
-    /**
-     * 用户id(钥匙id)
-     */
-    private int mUserId;
-    /**
-     * 密码(6位数字),0代表不支持
-     */
-    private int mPassword = 0;
-    /**
-     * 有效期类型
-     */
-    @LockBleConfig.Time
-    private int mValidTimeType;
-    /**
-     * 0代表不支持
-     * 年,月,日,时,分,秒<br>
-     * 有效期开始时间(永久时间为0,0,0,0,0)<br>
-     * 如果是保姆密码,格式:时,分<br>
-     */
-    private long mStartTime = 0;
-    /**
-     * 0代表不支持
-     * 年,月,日,时,分,秒<br>
-     * 有效期结束时间(永久时间为-1,-1,-1,-1,-1)<br>
-     * 如果是保姆密码,格式:时,分<br>
-     */
-    private long mStopTime = 0;
-    /**
-     * 0代表不支持
-     * 保姆锁重复有效方式,天,周,月
-     */
-    @LockBleConfig.Repeat
-    private int mRepeat = 0;
-    /**
-     * 重复时间,周中的那几天,月中的那几天
-     */
-    private List<Integer> mRepeatList = new ArrayList<>();
-}
-电子锁遥控器:
-LockRemoteControlDeviceData解析类
-LockRemoteControlBleConfig指令配置类
-```
-#### 8,体脂秤
+#### 7,[体脂秤](https://elinkthings.github.io/AILinkSDKAndroidDoc/BodyFatScale/zh/index.html)
 ```
 BodyFatBleUtilsData 体脂秤对象
 BodyFatDataUtil 体脂秤解析和指令配置类
