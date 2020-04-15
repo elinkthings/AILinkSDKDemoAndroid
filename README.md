@@ -337,4 +337,3 @@ McuHistoryRecordBean history object
 User user information object
 ```
 
-123456
