@@ -12,7 +12,7 @@ This document is to guide Android developers to integrate AILink-SDK-Android in 
 ## 1. Conditions of use:
 1. Android SDK minimum version android4.4 (API 19).
 2. The Bluetooth version used by the device needs 4.0 and above.
-3.Configure java1.8
+3. Configure java1.8
 4. The project depends on the androidx library
 
 ## 二, import SDK

@@ -10,10 +10,10 @@
 该文档为指导Android开发人员在Android 4.4及以上系统中集成AILink-SDK-Android，主要为一些关键的使用示例
 
 ## 一、使用条件：
-1.Android SDK最低版本android4.4（API 19）。
-2.设备所使用蓝牙版本需要4.0及以上。
-3.配置java1.8
-4.项目依赖androidx库
+1. Android SDK最低版本android4.4（API 19）。
+2. 设备所使用蓝牙版本需要4.0及以上。
+3. 配置java1.8
+4. 项目依赖androidx库
 
 ## 二、导入SDK
 
