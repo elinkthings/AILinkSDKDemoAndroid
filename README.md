@@ -336,3 +336,5 @@ BodyFatRecord Body Fat Record Object (Measured Return)
 McuHistoryRecordBean history object
 User user information object
 ```
+
+123456
