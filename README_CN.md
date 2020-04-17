@@ -205,6 +205,7 @@ mBluetoothService.disconnectAll()断开所有连接,由于此库支持多连接,
 
 ### 6,获取连接的设备对象
 ```
+// 如果没有添加解析包的的话你需要创建一个类去继承BaseBleDeviceData.class，然后可以通过这个类 onNotifyData 接口或获取到设备的Payload 数据
 BleDevice bleDevice = mBluetoothService.getBleDevice(mAddress);
 BleDevice对象拥有对此设备的所有操作,包括断开连接,发送指令,接收指令等操作
 BleDevice.disconnect();//断开连接
