@@ -211,6 +211,7 @@ it will be returned in onServicesDiscovered (String mac) in the OnCallbackBle in
 
 ### 6, Get connected device object
 ```
+Note:If no parsing package is added, you need to create a class to inherit BaseBleDeviceData.class, and then you can get the payload data of the device through this class onNotifyData interface
 BleDevice bleDevice = mBluetoothService.getBleDevice (mAddress);
 The BleDevice object has all operations on this device, including operations such as disconnecting, sending instructions, receiving instructions, etc.
 BleDevice.disconnect (); // Disconnect
