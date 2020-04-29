@@ -1,5 +1,5 @@
 
-# Module documentation - Android
+# AILink SDK Instructions-Android
 
 [aar package download address](https://github.com/elinkthings/AILinkSdkDemoAndroid/releases)
 
@@ -7,15 +7,26 @@
 
 [中文文档](README_CN.md)
 
-This document is to guide Android developers to integrate AILink-SDK-Android in Android 4.4 and above systems, and it is mainly for some key usage examples.
+## Contents
+- Conditions of use:
+- Import SDK
+- Permission settings
+- Start integration
+- More commonly used interface introduction
+- Matters needing attention
+- AILinkBleParsingAndroid library overview
+- Version History
+- FQA
+- Contact Us
 
-## 1. Conditions of use:
+
+## Conditions of use:
 1. Android SDK minimum version android4.4 (API 19).
 2. The Bluetooth version used by the device needs 4.0 and above.
 3. Configure java1.8
 4. The project depends on the androidx library
 
-## 二, import SDK
+## Import SDK
 
 
 ```
@@ -59,7 +70,7 @@ The download address is at the top of the document.
 
 ```
 
-## 二、Permission settings
+## Permission settings
 
 ```
 <!--In most cases, you need to ensure that the device supports BLE.-->
@@ -80,7 +91,7 @@ The download address is at the top of the document.
 
 > 6.0 and above systems must locate permissions, and need to obtain permissions manually
 
-## 三, start integration
+##  Start integration
 
 > Add below AndroidManifest.xml application tag
 ```
@@ -103,7 +114,7 @@ The download address is at the top of the document.
 > You can use the BleBeseActivity class provided in the library,
 and inherit the implementation method
 
-### 1, Bind service:
+-  Bind service:
 ```
 ps:Bind services where you need to handle Bluetooth, get Bluetooth device objects to handle, or comprehensively handle them in one place.
 private void bindService() {
@@ -131,7 +142,7 @@ private void bindService() {
     };
 
 ```
-### 2, Set the mBluetoothService.setOnCallback ();
+-  Set the mBluetoothService.setOnCallback ();
 ```
 Implement OnCallbackBle interface to get search, connect, disconnect status and data
 / **
@@ -175,7 +186,7 @@ public interface OnCallbackBle extends OnCallback {
     default void bleClose () {}
 }
 ```
-### 3, search for mBluetoothService.scanLeDevice (long timeOut);//timeOut milliseconds
+-  search for mBluetoothService.scanLeDevice (long timeOut);//timeOut milliseconds
 ```
     / **
       * Search device
@@ -196,20 +207,20 @@ public interface OnCallbackBle extends OnCallback {
 
 The discovered device will be returned in onScanning (BleValueBean data) in the OnCallbackBle interface
 ```
-### 4, connect mBluetoothService.connectDevice (String mAddress);
+-  connect mBluetoothService.connectDevice (String mAddress);
 ```
 Note: It is recommended to stop searching for mBluetoothService.stopScan () before connecting,
 so the connection process will be more stable After the connection is successful and the service is successfully obtained,
 it will be returned in onServicesDiscovered (String mac) in the OnCallbackBle interface
 ```
-### 5,Disconnect
+- Disconnect
 ```
  Disconnect all connections mBluetoothService.disconnectAll (),
  since this library supports multiple connections, only the method of disconnecting the device is provided in the service
 
 ```
 
-### 6, Get connected device object
+-  Get connected device object
 ```
 Note:If no parsing package is added, you need to create a class to inherit BaseBleDeviceData.class, and then you can get the payload data of the device through this class onNotifyData interface
 BleDevice bleDevice = mBluetoothService.getBleDevice (mAddress);
@@ -238,8 +249,8 @@ SendMcuBean is used to interact with MCU;
 If there is a need for custom transparent data transmission, please inherit SendDataBean or send it using SendDataBean object.
 
 ```
-## 四, more commonly used interface introduction
-### 1, setOnBleVersionListener (OnBleVersionListener bleVersionListener) in BleDevice // device version number, unit interface
+##  More commonly used interface introduction
+-  setOnBleVersionListener (OnBleVersionListener bleVersionListener) in BleDevice // device version number, unit interface
 ```
   public interface OnBleVersionListener {
     / **
@@ -253,7 +264,7 @@ If there is a need for custom transparent data transmission, please inherit Send
     default void onSupportUnit (List <SupportUnitBean> list) {}
 }
 ```
-### 2, setOnMcuParameterListener (OnMcuParameterListener mcuParameterListener) in BleDevice // Power, time interface
+- setOnMcuParameterListener (OnMcuParameterListener mcuParameterListener) in BleDevice // Power, time interface
 ```
 public interface OnMcuParameterListener {
     / **
@@ -272,7 +283,7 @@ public interface OnMcuParameterListener {
 
 }
 ```
-### 3, setOnBleOtherDataListener (OnBleOtherDataListener onBleOtherDataListener) in BleDevice // Transparent data interface, if the data format does not conform to the protocol, this interface will return data
+-  setOnBleOtherDataListener (OnBleOtherDataListener onBleOtherDataListener) in BleDevice // Transparent data interface, if the data format does not conform to the protocol, this interface will return data
 ```
 public interface OnBleOtherDataListener {
 
@@ -285,51 +296,51 @@ public interface OnBleOtherDataListener {
 }
 ```
 
-## 五, matters needing attention
+##  Matters needing attention
 
-#### 1.The Bluetooth library only provides data, and analyzes some ble data. The data connected to the MCU module is not parsed.
-#### 2, Please use the AILinkBleParsingAndroid library for module data analysis, which provides analysis templates for each module
-#### 3, AILinkBleParsingAndroid library needs to rely on AILinkSDKRepositoryAndroid library, it is not recommended to use it alone
-#### 4, The BaseBleDeviceData object is the base class object of the module device. It is recommended to inherit the implementation operation. For more details, please refer to the template in the AILinkBleParsingAndroid library.
-#### 5, AILinkBleParsingAndroid library has source code provided, you can find start on github
-#### 6, For more operations, please refer to the demo, you can clone this project
+- The Bluetooth library only provides data, and analyzes some ble data. The data connected to the MCU module is not parsed.
+-  Please use the AILinkBleParsingAndroid library for module data analysis, which provides analysis templates for each module
+-  AILinkBleParsingAndroid library needs to rely on AILinkSDKRepositoryAndroid library, it is not recommended to use it alone
+-  The BaseBleDeviceData object is the base class object of the module device. It is recommended to inherit the implementation operation. For more details, please refer to the template in the AILinkBleParsingAndroid library.
+-  AILinkBleParsingAndroid library has source code provided, you can find start on github
+-  For more operations, please refer to the demo, you can clone this project
 
 
-## 六, [AILinkBleParsingAndroid library overview](https://elinkthings.github.io/AILinkSDKAndroidDoc/)
+##  [AILinkBleParsingAndroid library overview](https://elinkthings.github.io/AILinkSDKAndroidDoc/)
 
-#### 1, [baby scale](https://elinkthings.github.io/AILinkSDKAndroidDoc/babyscale/en/index.html)
+-  [baby scale](https://elinkthings.github.io/AILinkSDKAndroidDoc/babyscale/en/index.html)
 ```
 BabyDeviceData parsing class
 BabyBleConfig directive configuration class
 ```
-#### 2, [height gauge](https://elinkthings.github.io/AILinkSDKAndroidDoc/height/en/index.html)
+-  [height gauge](https://elinkthings.github.io/AILinkSDKAndroidDoc/height/en/index.html)
 ```
 HeightDeviceData Parsing Class
 HeightBleConfig directive configuration class
 ```
-#### 3, [sphygmomanometer](https://elinkthings.github.io/AILinkSDKAndroidDoc/sphygmomanometer/en/index.html)
+-  [sphygmomanometer](https://elinkthings.github.io/AILinkSDKAndroidDoc/sphygmomanometer/en/index.html)
 ```
 SphyDeviceData parsing class
 SphyBleConfig instruction configuration class
 ```
-#### 4, [thermometer](https://elinkthings.github.io/AILinkSDKAndroidDoc/thermometer/en/index.html)
+-  [thermometer](https://elinkthings.github.io/AILinkSDKAndroidDoc/thermometer/en/index.html)
 ```
 TempDeviceData parsing class
 TempBleConfig instruction configuration class
 ```
-#### 5, [forehead gun](https://elinkthings.github.io/AILinkSDKAndroidDoc/foreheadgun/en/index.html)
+-  [forehead gun](https://elinkthings.github.io/AILinkSDKAndroidDoc/foreheadgun/en/index.html)
 ```
 TempGunDeviceData parsing class
 TempGunBleConfig instruction configuration class
 ```
-#### 6, [TPMS (Smart Tire Pressure)](https://elinkthings.github.io/AILinkSDKAndroidDoc/tpms/en/index.html)
+-  [TPMS (Smart Tire Pressure)](https://elinkthings.github.io/AILinkSDKAndroidDoc/tpms/en/index.html)
 ```
 TPMS transfer board:
 TpmsDeviceData Parsing Class
 TpmsBleConfig directive configuration class
 ```
 
-#### 7, [Body Fat Scale](https://elinkthings.github.io/AILinkSDKAndroidDoc/BodyFatScale/en/index.html)
+-  [Body Fat Scale](https://elinkthings.github.io/AILinkSDKAndroidDoc/BodyFatScale/en/index.html)
 ```
 BodyFatBleUtilsData Body Fat Scale Object
 BodyFatDataUtil Body fat scale analysis and instruction configuration class
@@ -338,3 +349,26 @@ McuHistoryRecordBean history object
 User user information object
 ```
 
+## Version History
+| Version number | Update time | Author | Update information
+|:----|:---|:-----|-----|
+|1.2.9|	2020/4/10|	xing|	Modify SDK to gradle form dependency, fix known bugs
+
+## FQA
+- Can't scan the Bluetooth device?
+1. Check whether the permissions of the App are normal. The 6.0 and above systems must locate the permissions and need to manually obtain the permissions;
+2. Check whether the location service of the mobile phone is turned on, and some mobile phones may need to turn on GPS;
+3. Whether ELinkBleServer is registered in AndroidManifest;
+4. Whether the device is connected by other mobile phones;
+5. Whether the search method is called too frequently, the scanLeDevice method needs to ensure that the total length of 5 scans exceeds 30s (different from different mobile phones, it is recommended to reduce the frequency as much as possible);
+6. Restart the Bluetooth of the mobile phone and try again, some mobile phones need to restart the entire mobile phone;
+
+
+## Contact Us
+Shenzhen elink things Co., Ltd.
+
+Phone: 0755-81773367
+
+Official website: www.elinkthings.com
+
+Email: app@elinkthings.com

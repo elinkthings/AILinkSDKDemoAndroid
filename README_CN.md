@@ -7,15 +7,23 @@
 
 [English documentation](README.md)
 
-该文档为指导Android开发人员在Android 4.4及以上系统中集成AILink-SDK-Android，主要为一些关键的使用示例
+## 目录
+- 使用条件
+- 导入SDK
+- 权限设置
+- 开始集成
+- 版本历史
+- FQA
+- 联系我们
 
-## 一、使用条件：
+
+##  使用条件
 1. Android SDK最低版本android4.4（API 19）。
 2. 设备所使用蓝牙版本需要4.0及以上。
 3. 配置java1.8
 4. 项目依赖androidx库
 
-## 二、导入SDK
+##  导入SDK
 
 
 ```
@@ -56,7 +64,7 @@ repositories {
 
 ```
 
-## 二、权限设置
+## 权限设置
 
 ```
 <!--In most cases, you need to ensure that the device supports BLE.-->
@@ -77,7 +85,13 @@ repositories {
 
 >  6.0及以上系统必须要定位权限，且需要手动获取权限
 
-## 三、开始集成
+## 开始集成
+
+> 首先给SDK配置key和secret，[申请地址](http://sdk.aicare.net.cn)
+```
+ //在主项目的application中初始化
+ AILinkSDK.getInstance().init(this, key, secret);
+```
 
 > 在AndroidManifest.xml application标签下面增加
 ```
@@ -89,17 +103,11 @@ repositories {
 </application>
 
 ```
-> 初始化 [key注册地址](http://sdk.aicare.net.cn)
 
-```
-   //在application中调用
-   AILinkSDK.getInstance().init(this, key, secret);
 
-```
+-  绑定服务
 > 注:可使用库中提供的BleBeseActivity类,继承实现方法,
 里面有绑定服务判断权限等相关操作,详细可参考demo
-
-### 1,绑定服务:
 ```
 ps:在需要处理蓝牙的地方绑定服务,拿到蓝牙设备对象来处理,也可在一个地方综合处理.
 
@@ -127,7 +135,7 @@ private void bindService() {
         }
     };
 ```
-### 2,绑定服务成功后设置监听mBluetoothService.setOnCallback();
+-  绑定服务成功后设置监听mBluetoothService.setOnCallback();
 ```
 实现OnCallbackBle接口可以获取搜索,连接,断开等状态和数据
 /**
@@ -171,7 +179,7 @@ public interface OnCallbackBle extends OnCallback {
    default void bleClose(){}
 }
 ```
-### 3,搜索 mBluetoothService.scanLeDevice(long timeOut);//timeOut毫秒
+-  搜索 mBluetoothService.scanLeDevice(long timeOut);//timeOut毫秒
 ```
     /**
      * 搜索设备
@@ -192,20 +200,20 @@ public interface OnCallbackBle extends OnCallback {
 
 搜索到的设备会在OnCallbackBle接口中的onScanning(BleValueBean data)返回
 ```
-### 4,连接mBluetoothService.connectDevice(String mAddress);
+-  连接mBluetoothService.connectDevice(String mAddress);
 ```
 注:连接之前建议停止搜索mBluetoothService.stopScan(),这样连接过程会更稳定
 连接成功并获取服务成功后会在OnCallbackBle接口中的onServicesDiscovered(String mac)返回
 ```
-### 5,断开连接
+-  断开连接
 ```
 mBluetoothService.disconnectAll()断开所有连接,由于此库支持多连接,
 所以service中只提供断开设备的方法,可在BleDevice.disconnect();断开连接
 ```
 
-### 6,获取连接的设备对象
+-  获取连接的设备对象
 ```
-// 如果没有添加解析包的的话你需要创建一个类去继承BaseBleDeviceData.class，然后可以通过这个类 onNotifyData 接口获取到设备的Payload 数据
+
 BleDevice bleDevice = mBluetoothService.getBleDevice(mAddress);
 BleDevice对象拥有对此设备的所有操作,包括断开连接,发送指令,接收指令等操作
 BleDevice.disconnect();//断开连接
@@ -230,12 +238,19 @@ BleDevice.sendData(SendDataBean sendDataBean)//发送指令,内容需要用SendD
 由于发送数据存在发送队列,SendDataBean对象不建议复用,避免数据给覆盖;
 SendBleBean用于与蓝牙模块交互;
 SendMcuBean用于与mcu交互;
-如果有自定义透传数据需求,请自行继承SendDataBean或者使用SendDataBean对象发送即可.
+UUID不变的情况下,自定义透传数据使用SendMcuBean对象即可;
+如果有自定义透传数据同时UUID也是特殊定义的,请参考SendMcuBean对象新建一个类继承SendDataBean即可;
 
 ```
 
-## 四、较常用的接口介绍
-### 1,BleDevice 中的setOnBleVersionListener(OnBleVersionListener bleVersionListener)//设备版本号,单位接口
+- App与设备交互
+- 依赖AILinkSDKParsingLibraryAndroid解析库,解析库中提供了各个模块的数据解析和控制指令,只需要实现各模块中的接口即可拿到数据.详细请参考demo和文档.也可以自行阅读源码
+
+- 由于解析库提供了标准的数据解析,自由度相对较低,也可以继承对应的解析类进行扩展.如果这样还不能满足需求,你可以创建一个类去继承BaseBleDeviceData.class，然后实现相关方法通过 onNotifyData 接口获取到设备的Payload 数据,接下来可以自行解析数据;
+
+
+##  较常用的接口介绍
+-  BleDevice 中的setOnBleVersionListener(OnBleVersionListener bleVersionListener)//设备版本号,单位接口
 ```
   public interface OnBleVersionListener {
     /**
@@ -249,7 +264,7 @@ SendMcuBean用于与mcu交互;
     default void onSupportUnit(List<SupportUnitBean> list) {}
 }
 ```
-### 2,BleDevice 中的setOnMcuParameterListener(OnMcuParameterListener mcuParameterListener)//电量,时间接口
+- BleDevice 中的setOnMcuParameterListener(OnMcuParameterListener mcuParameterListener)//电量,时间接口
 ```
 public interface OnMcuParameterListener {
     /**
@@ -268,7 +283,7 @@ public interface OnMcuParameterListener {
 
 }
 ```
-### 3,BleDevice 中的setOnBleOtherDataListener(OnBleOtherDataListener onBleOtherDataListener) //透传数据接口,数据格式不符合协议的才会走此接口返回数据
+-  BleDevice 中的setOnBleOtherDataListener(OnBleOtherDataListener onBleOtherDataListener) //透传数据接口,数据格式不符合协议的才会走此接口返回数据
 ```
 public interface OnBleOtherDataListener {
 
@@ -281,50 +296,51 @@ public interface OnBleOtherDataListener {
 }
 ```
 
-## 五、注意事项
+##  注意事项
 
-#### 1,蓝牙库只提供数据,解析部分ble数据,mcu模块对接的数据不解析
-#### 2,模块数据解析请使用AILinkBleParsingAndroid 库,里面有提供各模块的解析模板
-#### 3,AILinkBleParsingAndroid库需要依赖AILinkSDKRepositoryAndroid库,不建议单独使用
-#### 4,BaseBleDeviceData对象为模块设备的基类对象,建议继承实现操作,更多请参考AILinkBleParsingAndroid库中的模板
-#### 5,AILinkBleParsingAndroid库有源码提供,可在github上查找start
-#### 6,更多操作请参考demo,将此项目clone下来即可
+-  蓝牙库只提供数据,通过继承BaseBleDeviceData对象实现onNotifyData方法可以接收数据
+-  数据解析请使用AILinkBleParsingAndroid 库,里面有提供各模块的解析模板
+-  AILinkBleParsingAndroid库需要依赖AILinkSDKRepositoryAndroid库,不可单独使用
+-  BaseBleDeviceData对象为模块设备的基类对象,建议继承实现操作,更多请参考AILinkBleParsingAndroid库中的模板
+-  AILinkBleParsingAndroid库有源码提供,可在github上start
+-  更多操作请参考demo,将此项目clone下来即可
 
 
-## 六、[AILinkBleParsingAndroid库概述](https://elinkthings.github.io/AILinkSDKAndroidDoc/README_CN.html)
 
-#### 1,[婴儿秤](https://elinkthings.github.io/AILinkSDKAndroidDoc/babyscale/zh/index.html)
+## [AILinkBleParsingAndroid库概述](https://elinkthings.github.io/AILinkSDKAndroidDoc/README_CN.html)
+
+- [婴儿秤](https://elinkthings.github.io/AILinkSDKAndroidDoc/babyscale/zh/index.html)
 ```
 BabyDeviceData解析类
 BabyBleConfig 指令配置类
 ```
-#### 2,[身高仪](https://elinkthings.github.io/AILinkSDKAndroidDoc/height/zh/index.html)
+- [身高仪](https://elinkthings.github.io/AILinkSDKAndroidDoc/height/zh/index.html)
 ```
 HeightDeviceData解析类
 HeightBleConfig指令配置类
 ```
-#### 3,[血压计](https://elinkthings.github.io/AILinkSDKAndroidDoc/sphygmomanometer/zh/index.html)
+- [血压计](https://elinkthings.github.io/AILinkSDKAndroidDoc/sphygmomanometer/zh/index.html)
 ```
 SphyDeviceData解析类
 SphyBleConfig指令配置类
 ```
-#### 4,[体温计](https://elinkthings.github.io/AILinkSDKAndroidDoc/thermometer/zh/index.html)
+- [体温计](https://elinkthings.github.io/AILinkSDKAndroidDoc/thermometer/zh/index.html)
 ```
 TempDeviceData解析类
 TempBleConfig指令配置类
 ```
-#### 5,[额温枪](https://elinkthings.github.io/AILinkSDKAndroidDoc/foreheadgun/zh/index.html)
+- [额温枪](https://elinkthings.github.io/AILinkSDKAndroidDoc/foreheadgun/zh/index.html)
 ```
 TempGunDeviceData解析类
 TempGunBleConfig指令配置类
 ```
-#### 6,[TPMS(智能胎压)](https://elinkthings.github.io/AILinkSDKAndroidDoc/tpms/zh/index.html)
+- [TPMS(智能胎压)](https://elinkthings.github.io/AILinkSDKAndroidDoc/tpms/zh/index.html)
 ```
 TPMS转接板:
 TpmsDeviceData解析类
 TpmsBleConfig指令配置类
 ```
-#### 7,[体脂秤](https://elinkthings.github.io/AILinkSDKAndroidDoc/BodyFatScale/zh/index.html)
+- [体脂秤](https://elinkthings.github.io/AILinkSDKAndroidDoc/BodyFatScale/zh/index.html)
 ```
 BodyFatBleUtilsData 体脂秤对象
 BodyFatDataUtil 体脂秤解析和指令配置类
@@ -332,3 +348,29 @@ BodyFatRecord 体脂记录对象(测量返回)
 McuHistoryRecordBean 历史记录对象
 User 用户信息对象
 ```
+
+## 版本历史
+|版本号|更新时间|作者|更新信息|
+|:----|:---|:-----|-----|
+|1.2.9|	2020/4/10|	xing|	修改SDK为gradle形式依赖,修复已知bug
+
+
+
+## FQA
+- 扫描不到蓝牙设备？
+1.查看App权限是否正常,6.0及以上系统必须要定位权限，且需要手动获取权限;
+2.查看手机的定位服务是否开启,部分手机可能需要打开GPS;
+3.ELinkBleServer是否在在AndroidManifest中注册;
+4.设备是否被其他手机连接;
+5.是否调用搜索方法太频繁, scanLeDevice方法需要保证5次扫描总时长超过30s(各别手机有差异,建议尽量减少频率);
+6.重启手机蓝牙再试试,部分手机需要整个手机重启;
+
+
+## 联系我们
+深圳市易连物联网有限公司
+
+电话：0755-81773367
+
+官网：www.elinkthings.com
+
+邮箱：app@elinkthings.com
