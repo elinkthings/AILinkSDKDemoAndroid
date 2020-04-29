@@ -354,8 +354,11 @@ User user information object
 |:----|:---|:-----|-----|
 |1.2.9|	2020/4/10|	xing|	Modify SDK to gradle form dependency, fix known bugs
 
+
 ## FQA
+
 - Can't scan the Bluetooth device?
+
 1. Check whether the permissions of the App are normal. The 6.0 and above systems must locate the permissions and need to manually obtain the permissions;
 2. Check whether the location service of the mobile phone is turned on, and some mobile phones may need to turn on GPS;
 3. Whether ELinkBleServer is registered in AndroidManifest;
