@@ -45,7 +45,7 @@ repositories {
 
 2.添加依赖项
 	dependencies {
-	        implementation 'com.github.elinkthings:AILinkSDKRepositoryAndroid:1.2.9'//蓝牙库
+	        implementation 'com.github.elinkthings:AILinkSDKRepositoryAndroid:1.3.0'//蓝牙库
 	        implementation 'com.github.elinkthings:AILinkSDKParsingLibraryAndroid:1.2.9'//解析库
 	}
 
@@ -353,7 +353,7 @@ User 用户信息对象
 |版本号|更新时间|作者|更新信息|
 |:----|:---|:-----|-----|
 |1.2.9|	2020/4/10|	xing|	修改SDK为gradle形式依赖,修复已知bug
-
+|1.3.0|	2020/05/08|	xing|	修复只解析20个byte的bug
 
 
 ## FQA

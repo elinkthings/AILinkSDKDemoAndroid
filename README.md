@@ -49,7 +49,7 @@ Add this to the root build.gradle at the end of the repository:
 2. Add dependencies
 	dependencies {
 	        ...
-	        implementation 'com.github.elinkthings:AILinkSDKRepositoryAndroid:1.2.9'//Bluetooth library
+	        implementation 'com.github.elinkthings:AILinkSDKRepositoryAndroid:1.3.0'//Bluetooth library
 	        implementation 'com.github.elinkthings:AILinkSDKParsingLibraryAndroid:1.2.9'//Parsing library
 	}
 
@@ -352,7 +352,8 @@ User user information object
 ## Version History
 | Version number | Update time | Author | Update information
 |:----|:---|:-----|-----|
-|1.2.9|	2020/4/10|	xing|	Modify SDK to gradle form dependency, fix known bugs
+|1.2.9|	2020/04/10|	xing|	Modify SDK to gradle form dependency, fix known bugs
+|1.3.0|	2020/05/08|	xing|	Fix bug that only parses 20 bytes
 
 
 ## FQA
