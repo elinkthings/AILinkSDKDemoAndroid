@@ -1,4 +1,4 @@
-
+# Deprecated, please use http://git.elinkthings.com/elink/AILinkSDK_Android.git
 # AILink SDK Instructions-Android
 
 [aar package download address](https://github.com/elinkthings/AILinkSdkDemoAndroid/releases)
