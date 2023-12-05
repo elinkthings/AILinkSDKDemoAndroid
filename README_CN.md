@@ -1,4 +1,4 @@
-
+# 已弃用,请使用http://git.elinkthings.com/elink/AILinkSDK_Android.git
 # AILink SDK使用说明 - Android
 
 [aar包下载地址](https://github.com/elinkthings/AILinkSdkDemoAndroid/releases)
